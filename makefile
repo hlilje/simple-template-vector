@@ -2,6 +2,7 @@ CXX = g++
 CFLAGS = -g -Wall -std=c++0x
 LIBS = ../cxxtest
 TARGET = vector
+TEST_TARGET = test
 
 .PHONY: default all clean test
 
@@ -30,5 +31,5 @@ test_init:
 	-o testrunner.cpp test_template_vec.cpp
 
 test: test_init vector.o
-	$(CXX) $(CFLAGS) -o simple_test.out -I$(LIBS) \
+	$(CXX) $(CFLAGS) -o $(TEST_TARGET) -I$(LIBS) \
 	testrunner.cpp vector.o

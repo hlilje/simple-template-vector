@@ -1,7 +1,8 @@
 *.o
 *.out
-*.out.dSYM
+*.dSYM
 *.DS_Store
 vector
 main
+test
 testrunner.cpp
