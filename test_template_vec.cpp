@@ -210,6 +210,25 @@ class VectorTestSuite : public CxxTest::TestSuite {
             /* Vector<int[]>(); */
         }
 
+        void test_insert()
+        {
+            Vector<int> v(9, 1);
+            v.insert(0, 2);
+            TS_ASSERT(v[0] == 2);
+            for (unsigned int i = 1; i < v.size(); ++i)
+                TS_ASSERT(v[i] == 1);
+            v.insert(5, 3);
+            TS_ASSERT(v[5] == 3);
+            v.insert(10, 4);
+            TS_ASSERT(v[10] == 4);
+
+            Vector<int> w(5, 8);
+            w.insert(4, 1);
+            TS_ASSERT(w[4] == 1);
+            for (unsigned int i = 0; i < w.size() - 2; ++i)
+                TS_ASSERT(w[i] == 8);
+        }
+
         /**
          * Copy of inital tests.
          */
