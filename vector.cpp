@@ -9,30 +9,31 @@
 template <typename T>
 Vector<T>::Vector()
 {
-    _num_elements = 0;
-    _size = BASE_SIZE;
-    _elements = new T[_size];
+    init(0);
 }
 
 template <typename T>
-Vector<T>::Vector(std::size_t size)
+Vector<T>::Vector(const std::size_t size)
 {
-    _num_elements = size;
-    if (size < BASE_SIZE)
-        size = BASE_SIZE;
-    _elements = new T[size];
-    _size = size;
+    init(size);
+}
+
+template <typename T>
+Vector<T>::Vector(const std::size_t size, const T init_val)
+{
+    init(size);
+    fill(init_val);
 }
 
 template <typename T>
 Vector<T>::Vector(const Vector& other)
 {
-    T size = other.size();
+    std::size_t size = other.size();
     _elements = new T[size];
     _size = size;
     _num_elements = size;
 
-    for (unsigned int i = 0; i < _size; ++i)
+    for (unsigned int i = 0; i < _num_elements; ++i)
         _elements[i] = other[i];
 }
 
@@ -106,6 +107,16 @@ Vector<T>& Vector<T>::operator=(Vector&& other)
 }
 
 // Private functions
+
+template <typename T>
+const void Vector<T>::init(std::size_t size)
+{
+    _num_elements = size;
+    if (size < BASE_SIZE)
+        size = BASE_SIZE;
+    _elements = new T[size];
+    _size = size;
+}
 
 template <typename T>
 const void Vector<T>::expand(const int size, const int i)

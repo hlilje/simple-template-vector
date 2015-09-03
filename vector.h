@@ -18,12 +18,15 @@ class Vector
         std::size_t _size; // Internal container size
         std::size_t _num_elements;
 
+        const void init(std::size_t);
         const void expand(const int, const int i = -1);
         const void fill(const T);
     public:
         Vector();
 
         Vector(const std::size_t);
+
+        Vector(const std::size_t, const T);
 
         Vector(const Vector&);
 
