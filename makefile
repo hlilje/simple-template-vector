@@ -23,8 +23,10 @@ $(TARGET): $(OBJECTS)
 clean:
 	-rm -f *.o
 	-rm -f $(TARGET)
+	-rm -f $(TEST_TARGET)
 	-rm -f testrunner.cpp
 	-rm -f *.out
+	-rm -r -f *.dSYM
 
 test_init:
 	python2 $(LIBS)/cxxtestgen.py --error-printer \
