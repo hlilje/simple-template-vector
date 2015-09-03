@@ -1,3 +1,5 @@
+#ifndef template_vec
+#define template_vec
 #include "vector.h"
 
 
@@ -7,7 +9,7 @@ Vector<T>::Vector()
 }
 
 template <typename T>
-Vector<T>::Vector(const std::size_t size)
+Vector<T>::Vector(std::size_t size)
 {
     _num_elements = size;
     if (size < BASE_SIZE)
@@ -154,3 +156,5 @@ const std::size_t Vector<T>::capacity() const
 // TODO Vector<T>::end();
 
 // TODO Vector<T>::find(const T&);
+
+#endif
