@@ -3,12 +3,12 @@
 #include <iostream>
 
 
-template <class T>
+template <typename T>
 Vector<T>::Vector()
 {
 }
 
-template <class T>
+template <typename T>
 Vector<T>::Vector(const std::size_t size)
 {
     _num_elements = size;
@@ -20,7 +20,7 @@ Vector<T>::Vector(const std::size_t size)
     clear();
 }
 
-template <class T>
+template <typename T>
 Vector<T>::Vector(const Vector& other)
 {
     T size = other.size();
@@ -32,7 +32,7 @@ Vector<T>::Vector(const Vector& other)
         _elements[i] = other[i];
 }
 
-template <class T>
+template <typename T>
 Vector<T>::Vector(Vector&& other) :
     _elements(other._elements), _size(other._size),
     _num_elements(other._num_elements)
@@ -40,7 +40,7 @@ Vector<T>::Vector(Vector&& other) :
     other._elements = nullptr;
 }
 
-template <class T>
+template <typename T>
 Vector<T>::Vector(const std::initializer_list<T> list)
 {
     T size = list.size();
@@ -49,16 +49,16 @@ Vector<T>::Vector(const std::initializer_list<T> list)
     _num_elements = 0;
 
     for (auto v : list)
-        add(v);
+        push_back(v);
 }
 
-template <class T>
+template <typename T>
 Vector<T>::~Vector()
 {
     delete [] _elements;
 }
 
-template <class T>
+template <typename T>
 T& Vector<T>::operator[](int x)
 {
     if (x < 0)
@@ -68,7 +68,7 @@ T& Vector<T>::operator[](int x)
     return _elements[x];
 }
 
-template <class T>
+template <typename T>
 const T& Vector<T>::operator[](int x) const
 {
     if (x < 0)
@@ -78,7 +78,7 @@ const T& Vector<T>::operator[](int x) const
     return _elements[x];
 }
 
-template <class T>
+template <typename T>
 Vector<T>& Vector<T>::operator=(const Vector& other)
 {
     if (this == &other)
@@ -89,7 +89,7 @@ Vector<T>& Vector<T>::operator=(const Vector& other)
     return *this;
 }
 
-template <class T>
+template <typename T>
 Vector<T>& Vector<T>::operator=(Vector&& other)
 {
     _elements = other._elements;
@@ -99,7 +99,7 @@ Vector<T>& Vector<T>::operator=(Vector&& other)
     return *this;
 }
 
-template <class T>
+template <typename T>
 const void Vector<T>::expand(const int size)
 {
     std::size_t new_size       = _size + size;
@@ -112,7 +112,7 @@ const void Vector<T>::expand(const int size)
     _size = new_size;
 }
 
-template <class T>
+template <typename T>
 const void Vector<T>::push_back(const T x)
 {
     if (_num_elements >= _size)
@@ -122,30 +122,30 @@ const void Vector<T>::push_back(const T x)
     ++_num_elements; 
 }
 
-template <class T>
+template <typename T>
 const void Vector<T>::insert(const std::size_t i, const T x)
 {
 }
 
-template <class T>
+template <typename T>
 const void Vector<T>::clear()
 {
     for (unsigned int i = 0; i < _size; ++i)
         _elements[i] = (T) {0};
 }
 
-template <class T>
+template <typename T>
 const void Vector<T>::erase(const std::size_t i)
 {
 }
 
-template <class T>
+template <typename T>
 const std::size_t Vector<T>::size() const
 {
     return _num_elements;
 }
 
-template <class T>
+template <typename T>
 const std::size_t Vector<T>::capacity() const
 {
 }

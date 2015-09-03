@@ -4,7 +4,8 @@
 
 #define BASE_SIZE 10
 
-template <class T>
+
+template <typename T>
 class Vector
 {
     private:
