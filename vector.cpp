@@ -106,12 +106,19 @@ Vector<T>& Vector<T>::operator=(Vector&& other)
 }
 
 template <typename T>
-const void Vector<T>::expand(const int size)
+const void Vector<T>::expand(const int size, const int i = -1)
 {
-    std::size_t new_size       = _size + size;
+    std::size_t new_size = _size + size;
     T* new_elements = new T[new_size];
 
-    std::copy(_elements, _elements + _size, new_elements);
+    if (i < 0)
+        std::copy(_elements, _elements + _size, new_elements);
+    else
+    {
+        std::copy(_elements, _elements + i, new_elements);
+        std::copy(_elements + i, _elements + _size - i, new_elements + i + 1);
+    }
+
     delete [] _elements;
 
     _elements = new_elements;
@@ -125,12 +132,20 @@ const void Vector<T>::push_back(const T x)
         expand(_size);
 
     _elements[_num_elements] = x;
-    ++_num_elements; 
+    ++_num_elements;
 }
 
 template <typename T>
 const void Vector<T>::insert(const std::size_t i, const T x)
 {
+    if (_num_elements >= _size)
+        expand(_size, i);
+    else
+        for(std::size_t j = _num_elements; j > i; --j)
+            _elements[j] = _elements[j-1];
+
+    _elements[i] = x;
+    ++_num_elements;
 }
 
 template <typename T>
@@ -143,6 +158,10 @@ const void Vector<T>::clear()
 template <typename T>
 const void Vector<T>::erase(const std::size_t i)
 {
+    --_num_elements;
+
+    for(std::size_t j = i; j < _num_elements; ++j)
+        _elements[j] = _elements[j+1];
 }
 
 template <typename T>

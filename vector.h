@@ -18,7 +18,7 @@ class Vector
         std::size_t _size; // Actual internal container size
         std::size_t _num_elements;
 
-        const void expand(const int);
+        const void expand(const int, const int);
     public:
         Vector();
 
