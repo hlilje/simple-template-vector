@@ -2,14 +2,17 @@
 #define TEMPLATE_VEC
 
 #include "vector.h"
+#define TYPE_ASSERT 0
 
 // Constructors/destructor
 
 template <typename T>
 Vector<T>::Vector()
 {
+#if TYPE_ASSERT
     static_assert(std::is_move_assignable<T>::value, "Type must be Move Assignable");
     static_assert(std::is_move_constructible<T>::value, "Type must be Move Constructible");
+#endif
 
     init(0);
 }
@@ -17,8 +20,10 @@ Vector<T>::Vector()
 template <typename T>
 Vector<T>::Vector(const std::size_t size)
 {
+#if TYPE_ASSERT
     static_assert(std::is_move_assignable<T>::value, "Type must be Move Assignable");
     static_assert(std::is_move_constructible<T>::value, "Type must be Move Constructible");
+#endif
 
     init(size);
 }
@@ -26,8 +31,10 @@ Vector<T>::Vector(const std::size_t size)
 template <typename T>
 Vector<T>::Vector(const std::size_t size, const T init_val)
 {
+#if TYPE_ASSERT
     static_assert(std::is_move_assignable<T>::value, "Type must be Move Assignable");
     static_assert(std::is_move_constructible<T>::value, "Type must be Move Constructible");
+#endif
 
     init(size);
     fill(init_val);
@@ -36,8 +43,10 @@ Vector<T>::Vector(const std::size_t size, const T init_val)
 template <typename T>
 Vector<T>::Vector(const Vector& other)
 {
+#if TYPE_ASSERT
     static_assert(std::is_move_assignable<T>::value, "Type must be Move Assignable");
     static_assert(std::is_move_constructible<T>::value, "Type must be Move Constructible");
+#endif
 
     std::size_t size = other.size();
     _elements = new T[size];
@@ -53,8 +62,10 @@ Vector<T>::Vector(Vector&& other) :
     _elements(other._elements), _size(other._size),
     _num_elements(other._num_elements)
 {
+#if TYPE_ASSERT
     static_assert(std::is_move_assignable<T>::value, "Type must be Move Assignable");
     static_assert(std::is_move_constructible<T>::value, "Type must be Move Constructible");
+#endif
 
     other._elements = nullptr;
 }
@@ -62,8 +73,10 @@ Vector<T>::Vector(Vector&& other) :
 template <typename T>
 Vector<T>::Vector(const std::initializer_list<T> list)
 {
+#if TYPE_ASSERT
     static_assert(std::is_move_assignable<T>::value, "Type must be Move Assignable");
     static_assert(std::is_move_constructible<T>::value, "Type must be Move Constructible");
+#endif
 
     T size = list.size();
     _elements = new T[size];
