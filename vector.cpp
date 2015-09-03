@@ -148,6 +148,7 @@ const std::size_t Vector<T>::size() const
 template <typename T>
 const std::size_t Vector<T>::capacity() const
 {
+    return _size;
 }
 
 // TODO Vector<T>::begin();

@@ -27,7 +27,7 @@ clean:
 
 test_init:
 	python2 $(LIBS)/cxxtestgen.py --error-printer \
-	-o testrunner.cpp test_vec.cpp
+	-o testrunner.cpp test_template_vec.cpp
 
 test: test_init vector.o
 	$(CXX) $(CFLAGS) -o simple_test.out -I$(LIBS) \
