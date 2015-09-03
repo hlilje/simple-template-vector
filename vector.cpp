@@ -4,6 +4,8 @@
 #include "vector.h"
 
 
+// Constructors/destructor
+
 template <typename T>
 Vector<T>::Vector()
 {
@@ -64,6 +66,8 @@ Vector<T>::~Vector()
     delete [] _elements;
 }
 
+// Operators
+
 template <typename T>
 T& Vector<T>::operator[](int x)
 {
@@ -105,8 +109,10 @@ Vector<T>& Vector<T>::operator=(Vector&& other)
     return *this;
 }
 
+// Private functions
+
 template <typename T>
-const void Vector<T>::expand(const int size, const int i = -1)
+const void Vector<T>::expand(const int size, const int i)
 {
     std::size_t new_size = _size + size;
     T* new_elements = new T[new_size];
@@ -124,6 +130,15 @@ const void Vector<T>::expand(const int size, const int i = -1)
     _elements = new_elements;
     _size = new_size;
 }
+
+template <typename T>
+const void Vector<T>::fill(const T x)
+{
+    for (unsigned int i = 0; i < _size; ++i)
+        _elements[i] = T {x};
+}
+
+// Public functions
 
 template <typename T>
 const void Vector<T>::push_back(const T x)
@@ -151,8 +166,7 @@ const void Vector<T>::insert(const std::size_t i, const T x)
 template <typename T>
 const void Vector<T>::clear()
 {
-    for (unsigned int i = 0; i < _size; ++i)
-        _elements[i] = (T) {0};
+    _num_elements = 0;
 }
 
 template <typename T>

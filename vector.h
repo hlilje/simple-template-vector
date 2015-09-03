@@ -15,10 +15,11 @@ class Vector
 {
     private:
         T* _elements;
-        std::size_t _size; // Actual internal container size
+        std::size_t _size; // Internal container size
         std::size_t _num_elements;
 
-        const void expand(const int, const int);
+        const void expand(const int, const int i = -1);
+        const void fill(const T);
     public:
         Vector();
 
