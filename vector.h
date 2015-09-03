@@ -6,6 +6,7 @@
 #include <initializer_list>
 #include <iostream>
 #include <stdexcept>
+#include <type_traits>
 
 #define BASE_SIZE 10
 

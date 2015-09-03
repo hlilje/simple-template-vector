@@ -227,7 +227,7 @@ class VectorTestSuite : public CxxTest::TestSuite {
             assert(vc.size() == 2);     // ok: ändrar ej vektorn som är konstant
             assert(vc[0] == 3.14 &&     // ok: ändrar ej vektorn som är konstant
 	           vc[1] == 2.11);
-*/            
+*/
             
             v.erase(0);                 // ta bort första elementet               
             assert(v.size() == 1);      // rätt antal elelment

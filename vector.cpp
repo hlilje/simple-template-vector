@@ -1,14 +1,15 @@
 #ifndef TEMPLATE_VEC
-
 #define TEMPLATE_VEC
-#include "vector.h"
 
+#include "vector.h"
 
 // Constructors/destructor
 
 template <typename T>
 Vector<T>::Vector()
 {
+    static_assert(std::is_move_assignable<T>::value, "Type must be Move Assignable");
+    static_assert(std::is_move_constructible<T>::value, "Type must be Move Constructible");
     init(0);
 }
 
