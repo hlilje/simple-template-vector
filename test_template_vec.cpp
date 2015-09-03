@@ -135,7 +135,11 @@ class VectorTestSuite : public CxxTest::TestSuite {
             TS_ASSERT(a[0] == 0);
         }
 
-        void test_initializer_list() {
+        /**
+         * Test the initializer list.
+         */
+        void test_initializer_list()
+        {
             Vector<unsigned int> a({4,5,6});
             TS_ASSERT(a.size() == 3);
             TS_ASSERT(a[0] == 4);
@@ -190,6 +194,9 @@ class VectorTestSuite : public CxxTest::TestSuite {
             TS_ASSERT(a[19] == 19);
         }
 
+        /**
+         * Copy of inital tests.
+         */
         void test_old()
         {
             Vector<double> v;           // ok: defaultkonstruktor ger vektor med flyttal

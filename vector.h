@@ -1,6 +1,8 @@
 #include <algorithm>
 #include <cstddef>
 #include <initializer_list>
+#include <iostream>
+#include <stdexcept>
 
 #define BASE_SIZE 10
 
