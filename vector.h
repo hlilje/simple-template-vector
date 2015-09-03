@@ -1,5 +1,6 @@
-#ifndef template_vec_h
-#define template_vec_h
+#ifndef TEMPLATE_VEC_H
+#define TEMPLATE_VEC_H
+
 #include <algorithm>
 #include <cstddef>
 #include <initializer_list>
@@ -59,5 +60,7 @@ class Vector
 
         // TODO find(const T&);
 };
+
 #include "vector.cpp"
+
 #endif

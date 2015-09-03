@@ -1,5 +1,6 @@
-#ifndef template_vec
-#define template_vec
+#ifndef TEMPLATE_VEC
+
+#define TEMPLATE_VEC
 #include "vector.h"
 
 
