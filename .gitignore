@@ -1,0 +1,7 @@
+*.o
+*.out
+*.out.dSYM
+*.DS_Store
+vector
+main
+testrunner.cpp
