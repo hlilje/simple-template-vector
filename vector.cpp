@@ -10,18 +10,25 @@ Vector<T>::Vector()
 {
     static_assert(std::is_move_assignable<T>::value, "Type must be Move Assignable");
     static_assert(std::is_move_constructible<T>::value, "Type must be Move Constructible");
+
     init(0);
 }
 
 template <typename T>
 Vector<T>::Vector(const std::size_t size)
 {
+    static_assert(std::is_move_assignable<T>::value, "Type must be Move Assignable");
+    static_assert(std::is_move_constructible<T>::value, "Type must be Move Constructible");
+
     init(size);
 }
 
 template <typename T>
 Vector<T>::Vector(const std::size_t size, const T init_val)
 {
+    static_assert(std::is_move_assignable<T>::value, "Type must be Move Assignable");
+    static_assert(std::is_move_constructible<T>::value, "Type must be Move Constructible");
+
     init(size);
     fill(init_val);
 }
@@ -29,6 +36,9 @@ Vector<T>::Vector(const std::size_t size, const T init_val)
 template <typename T>
 Vector<T>::Vector(const Vector& other)
 {
+    static_assert(std::is_move_assignable<T>::value, "Type must be Move Assignable");
+    static_assert(std::is_move_constructible<T>::value, "Type must be Move Constructible");
+
     std::size_t size = other.size();
     _elements = new T[size];
     _size = size;
@@ -43,12 +53,18 @@ Vector<T>::Vector(Vector&& other) :
     _elements(other._elements), _size(other._size),
     _num_elements(other._num_elements)
 {
+    static_assert(std::is_move_assignable<T>::value, "Type must be Move Assignable");
+    static_assert(std::is_move_constructible<T>::value, "Type must be Move Constructible");
+
     other._elements = nullptr;
 }
 
 template <typename T>
 Vector<T>::Vector(const std::initializer_list<T> list)
 {
+    static_assert(std::is_move_assignable<T>::value, "Type must be Move Assignable");
+    static_assert(std::is_move_constructible<T>::value, "Type must be Move Constructible");
+
     T size = list.size();
     _elements = new T[size];
     _size = size;
@@ -70,9 +86,9 @@ template <typename T>
 T& Vector<T>::operator[](int x)
 {
     if (x < 0)
-        throw std::out_of_range("negative index");
+        throw std::out_of_range("Negative index");
     else if ((unsigned int) x >= _num_elements)
-        throw std::out_of_range("index larger than vector size");
+        throw std::out_of_range("Index larger than vector size");
     return _elements[x];
 }
 
@@ -80,9 +96,9 @@ template <typename T>
 const T& Vector<T>::operator[](int x) const
 {
     if (x < 0)
-        throw std::out_of_range("negative index");
+        throw std::out_of_range("Negative index");
     else if ((unsigned int) x >= _num_elements)
-        throw std::out_of_range("index larger than vector size");
+        throw std::out_of_range("Index larger than vector size");
     return _elements[x];
 }
 

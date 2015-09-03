@@ -201,6 +201,16 @@ class VectorTestSuite : public CxxTest::TestSuite {
         }
 
         /**
+         * Verify that exceptions are thrown if type is not move
+         * assignable/constructable.
+         */
+        void test_move_assignable_constructable()
+        {
+            // Uncomment to get compile error
+            /* Vector<int[]>(); */
+        }
+
+        /**
          * Copy of inital tests.
          */
         void test_old()
