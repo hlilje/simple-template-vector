@@ -1,6 +1,4 @@
 #include "vector.h"
-#include <stdexcept>
-#include <iostream>
 
 
 template <typename T>
