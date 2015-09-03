@@ -7,6 +7,11 @@
 template <typename T>
 Vector<T>::Vector()
 {
+    _num_elements = 0;
+    _size = BASE_SIZE;
+    _elements = new T[_size];
+
+    clear();
 }
 
 template <typename T>
