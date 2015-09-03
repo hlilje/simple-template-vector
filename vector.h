@@ -4,12 +4,11 @@
 
 #define BASE_SIZE 10
 
-
 template <class T>
 class Vector
 {
     private:
-        unsigned int* _elements;
+        T* _elements;
         std::size_t _size; // Actual internal container size
         std::size_t _num_elements;
 
@@ -17,33 +16,33 @@ class Vector
     public:
         Vector();
 
-        Vector(std::size_t);
+        Vector(const std::size_t);
 
         Vector(const Vector&);
 
         Vector(Vector&&);
 
-        Vector(std::initializer_list<unsigned int>);
+        Vector(const std::initializer_list<T>);
 
         ~Vector();
 
 
-        unsigned int& operator[](int x);
+        T& operator[](int x);
 
-        const unsigned int& operator[](int x) const;
+        const T& operator[](int x) const;
 
         Vector& operator=(const Vector&);
 
         Vector& operator=(Vector&&);
 
 
-        const void push_back(T);
+        const void push_back(const T);
 
-        const void insert(std::size_t, T);
+        const void insert(const std::size_t, const T);
 
         const void clear();
 
-        const void erase(std::size_t);
+        const void erase(const std::size_t);
 
         const std::size_t size() const;
 

@@ -3,25 +3,28 @@
 #include <iostream>
 
 
-Vector::Vector()
+template <class T>
+Vector<T>::Vector()
 {
 }
 
-Vector::Vector(std::size_t size)
+template <class T>
+Vector<T>::Vector(const std::size_t size)
 {
     _num_elements = size;
     if (size < BASE_SIZE)
         size = BASE_SIZE;
-    _elements = new unsigned int[size];
+    _elements = new T[size];
     _size = size;
 
-    reset();
+    clear();
 }
 
-Vector::Vector(const Vector& other)
+template <class T>
+Vector<T>::Vector(const Vector& other)
 {
-    unsigned int size = other.size();
-    _elements = new unsigned int[size];
+    T size = other.size();
+    _elements = new T[size];
     _size = size;
     _num_elements = size;
 
@@ -29,17 +32,19 @@ Vector::Vector(const Vector& other)
         _elements[i] = other[i];
 }
 
-Vector::Vector(Vector&& other) :
+template <class T>
+Vector<T>::Vector(Vector&& other) :
     _elements(other._elements), _size(other._size),
     _num_elements(other._num_elements)
 {
     other._elements = nullptr;
 }
 
-Vector::Vector(std::initializer_list<unsigned int> list)
+template <class T>
+Vector<T>::Vector(const std::initializer_list<T> list)
 {
-    unsigned int size = list.size();
-    _elements = new unsigned int[size];
+    T size = list.size();
+    _elements = new T[size];
     _size = size;
     _num_elements = 0;
 
@@ -47,12 +52,14 @@ Vector::Vector(std::initializer_list<unsigned int> list)
         add(v);
 }
 
-Vector::~Vector()
+template <class T>
+Vector<T>::~Vector()
 {
     delete [] _elements;
 }
 
-unsigned int& Vector::operator[](int x)
+template <class T>
+T& Vector<T>::operator[](int x)
 {
     if (x < 0)
         throw std::out_of_range("negative index");
@@ -61,7 +68,8 @@ unsigned int& Vector::operator[](int x)
     return _elements[x];
 }
 
-const unsigned int& Vector::operator[](int x) const
+template <class T>
+const T& Vector<T>::operator[](int x) const
 {
     if (x < 0)
         throw std::out_of_range("negative index");
@@ -70,7 +78,8 @@ const unsigned int& Vector::operator[](int x) const
     return _elements[x];
 }
 
-Vector& Vector::operator=(const Vector& other)
+template <class T>
+Vector<T>& Vector<T>::operator=(const Vector& other)
 {
     if (this == &other)
         return *this;
@@ -80,7 +89,8 @@ Vector& Vector::operator=(const Vector& other)
     return *this;
 }
 
-Vector& Vector::operator=(Vector&& other)
+template <class T>
+Vector<T>& Vector<T>::operator=(Vector&& other)
 {
     _elements = other._elements;
     _size = other._size;
@@ -89,10 +99,11 @@ Vector& Vector::operator=(Vector&& other)
     return *this;
 }
 
-const void Vector::expand(const int size)
+template <class T>
+const void Vector<T>::expand(const int size)
 {
     std::size_t new_size       = _size + size;
-    unsigned int* new_elements = new unsigned int[new_size];
+    T* new_elements = new T[new_size];
 
     std::copy(_elements, _elements + _size, new_elements);
     delete [] _elements;
@@ -101,7 +112,8 @@ const void Vector::expand(const int size)
     _size = new_size;
 }
 
-const void push_back(T)
+template <class T>
+const void Vector<T>::push_back(const T x)
 {
     if (_num_elements >= _size)
         expand(_size);
@@ -110,31 +122,36 @@ const void push_back(T)
     ++_num_elements; 
 }
 
-const void insert(std::size_t, T)
+template <class T>
+const void Vector<T>::insert(const std::size_t i, const T x)
 {
 }
 
-const void clear()
+template <class T>
+const void Vector<T>::clear()
 {
     for (unsigned int i = 0; i < _size; ++i)
-        _elements[i] = (unsigned int) {0};
+        _elements[i] = (T) {0};
 }
 
-const void erase(std::size_t)
+template <class T>
+const void Vector<T>::erase(const std::size_t i)
 {
 }
 
-const std::size_t Vector::size() const
+template <class T>
+const std::size_t Vector<T>::size() const
 {
     return _num_elements;
 }
 
-const std::size_t capacity() const
+template <class T>
+const std::size_t Vector<T>::capacity() const
 {
 }
 
-// TODO begin();
+// TODO Vector<T>::begin();
 
-// TODO end();
+// TODO Vector<T>::end();
 
-// TODO find(const T&);
+// TODO Vector<T>::find(const T&);
