@@ -138,7 +138,6 @@ class VectorTestSuite : public CxxTest::TestSuite {
             a[1] = 8;
             a = a;
             TS_ASSERT(a[1] == 8);
-            /* TS_ASSERT(a[0] == 0); */
         }
 
         /**
@@ -243,6 +242,30 @@ class VectorTestSuite : public CxxTest::TestSuite {
         }
 
         /**
+         * Test the erase function of the vector.
+         */
+        void test_erase()
+        {
+            Vector<int> a({1,2,3,4,5});
+            Vector<int> b(10);
+            Vector<int> c(2, 9);
+
+            a.erase(2);
+            TS_ASSERT(a[0] == 1);
+            TS_ASSERT(a[1] == 2);
+            TS_ASSERT(a[2] == 4);
+            TS_ASSERT(a[3] == 5);
+            TS_ASSERT(a.size() == 4);
+
+            b.erase(9);
+            TS_ASSERT(b.size() == 9);
+
+            unsigned int size = c.size();
+            for (unsigned int i = 0; i < size; ++i, c.erase(0));
+            TS_ASSERT(c.size() == 0);
+        }
+
+        /**
          * Copy of inital tests.
          */
         void test_old()
@@ -252,30 +275,29 @@ class VectorTestSuite : public CxxTest::TestSuite {
             delete [] a;
 
             assert(v.size() == 0);      // tom från början
-            v.push_back(3.14);          // lägg till ett element sist 
+            v.push_back(3.14);          // lägg till ett element sist
             assert(v.size() == 1);      // nu ligger ett element i vektorn
             v.insert(0, 2.10);          // lägg till före element 0, dvs först
             assert(v[0] == 2.10 &&      // hamnade de rätt?
-	           v[1] == 3.14);
+               v[1] == 3.14);
             assert(v.size() == 2);      // nu ligger två element i vektorn
-/*
-            v.sort(false);              // sortera i fallande ordning
-            assert(v[0] == 3.14 &&      // hamnade de rätt?
-	           v[1] == 2.10);       
-            assert(v.size() == 2);      // ingenting ändrat?
-            v[1] = 2.11;                // tilldelning av enstaka element;
 
-            const Vector<double> &vc = v;  // skapa konstant referens
-            assert(vc.size() == 2);     // ok: ändrar ej vektorn som är konstant
-            assert(vc[0] == 3.14 &&     // ok: ändrar ej vektorn som är konstant
-	           vc[1] == 2.11);
-*/
-            
-            v.erase(0);                 // ta bort första elementet               
+            /* v.sort(false);              // sortera i fallande ordning */
+            /* assert(v[0] == 3.14 &&      // hamnade de rätt? */
+            /*    v[1] == 2.10); */
+            /* assert(v.size() == 2);      // ingenting ändrat? */
+            /* v[1] = 2.11;                // tilldelning av enstaka element; */
+
+            /* const Vector<double> &vc = v;  // skapa konstant referens */
+            /* assert(vc.size() == 2);     // ok: ändrar ej vektorn som är konstant */
+            /* assert(vc[0] == 3.14 &&     // ok: ändrar ej vektorn som är konstant */
+            /*    vc[1] == 2.11); */
+
+            v.erase(0);                 // ta bort första elementet
             assert(v.size() == 1);      // rätt antal elelment
             v.clear();                  // töm hela vektorn
             assert(v.size() == 0);      // tom när alla element är borttagna
-            
+
             // kontrollera att följande rader inte går att kompilera
             //vc[0] = 3.1415;             // fel: tilldelning av konstant objekt
             //Vector<char> c = v;         // fel: tilldelning av olika typer
