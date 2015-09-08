@@ -227,6 +227,9 @@ class VectorTestSuite : public CxxTest::TestSuite {
             TS_ASSERT(w[4] == 1);
             for (unsigned int i = 0; i < w.size() - 2; ++i)
                 TS_ASSERT(w[i] == 8);
+
+            w.insert(w.size(), 33);
+            TS_ASSERT(w[w.size()-1] == 33);
         }
 
         /**
