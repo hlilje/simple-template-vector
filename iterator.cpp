@@ -34,10 +34,3 @@ VectorIterator<T>& VectorIterator<T>::operator=(const VectorIterator& other)
     _ptr = other._ptr;
     return *this;
 }
-
-template <typename T>
-VectorIterator<T>& VectorIterator<T>::operator=(VectorIterator&& other)
-{
-    _ptr = other._ptr;
-    return *this;
-}

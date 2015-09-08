@@ -59,11 +59,11 @@ class Vector
 
         const std::size_t capacity() const;
 
-        // TODO begin();
+        /* begin(); */
 
-        // TODO end();
+        /* end(); */
 
-        // TODO find(const T&);
+        /* find(const T&); */
 };
 
 #include "vector.cpp"

@@ -227,10 +227,19 @@ const std::size_t Vector<T>::capacity() const
     return _size;
 }
 
-// TODO Vector<T>::begin();
+/* template <typename T> */
+/* Vector<T>::begin() */
+/* { */
+/* } */
 
-// TODO Vector<T>::end();
+/* template <typename T> */
+/* Vector<T>::end() */
+/* { */
+/* } */
 
-// TODO Vector<T>::find(const T&);
+/* template <typename T> */
+/* Vector<T>::find(const T&) */
+/* { */
+/* } */
 
 #endif
