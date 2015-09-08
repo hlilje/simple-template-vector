@@ -7,16 +7,27 @@ class VectorIterator : public std::iterator<std::random_access_iterator_tag, T>
     private:
         T* _ptr; // Pointer to element array
     public:
-        VectorIterator();
 
-        VectorIterator(const VectorIterator&);
+        // Constructors/destructor
 
-        VectorIterator(const T*);
+        inline VectorIterator() :
+            _ptr(nullptr) {}
 
-        ~VectorIterator();
+        inline VectorIterator(const VectorIterator& it) :
+            _ptr(it._ptr) {}
 
+        inline VectorIterator(const T* ptr) :
+            _ptr(ptr) {}
 
-        VectorIterator& operator=(const VectorIterator&);
+        inline ~VectorIterator() {}
+
+        // Operators
+
+        inline VectorIterator<T>& operator=(const VectorIterator& other)
+        {
+            _ptr = other._ptr;
+            return *this;
+        }
 
 
         typedef typename std::iterator<std::random_access_iterator_tag, T>::difference_type difference_type;

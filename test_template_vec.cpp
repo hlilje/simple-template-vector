@@ -232,6 +232,16 @@ class VectorTestSuite : public CxxTest::TestSuite {
             TS_ASSERT(w[w.size()-1] == 33);
         }
 
+        void test_iterator()
+        {
+            Vector<int> v({2,3,4,5,6});
+            int i = 2;
+            for( VectorIterator<int> it = v.begin(); it != v.end(); ++it )
+            {
+                TS_ASSERT_EQUALS( *it, i++ );
+            }
+        }
+
         /**
          * Copy of inital tests.
          */
