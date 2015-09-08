@@ -16,7 +16,7 @@ class VectorIterator : public std::iterator<std::random_access_iterator_tag, T>
         inline VectorIterator(const VectorIterator& it) :
             _ptr(it._ptr) {}
 
-        inline VectorIterator(const T* ptr) :
+        inline VectorIterator(T* ptr) :
             _ptr(ptr) {}
 
         inline ~VectorIterator() {}

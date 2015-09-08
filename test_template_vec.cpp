@@ -24,11 +24,6 @@ class VectorTestSuite : public CxxTest::TestSuite {
             Vector<unsigned int> e = c;
             TS_ASSERT(e.size() == c.size());
 
-            /* Vector<unsigned int> f(3); */
-            /* TS_ASSERT(f[0] == 0); */
-            /* TS_ASSERT(f[1] == 0); */
-            /* TS_ASSERT(f[2] == 0); */
-
             const Vector<unsigned int> constA(10);
             TS_ASSERT(constA.size() == 10);
 
@@ -113,7 +108,6 @@ class VectorTestSuite : public CxxTest::TestSuite {
 
             Vector<unsigned int> b(a);
             TS_ASSERT_EQUALS(b[13], (unsigned int) 5);
-            /* TS_ASSERT_EQUALS(b[9], (unsigned int) 0); */
 
             a.push_back(17);
             TS_ASSERT_EQUALS(a[14], (unsigned int) 17);
