@@ -227,19 +227,27 @@ const std::size_t Vector<T>::capacity() const
     return _size;
 }
 
-/* template <typename T> */
-/* Vector<T>::begin() */
-/* { */
-/* } */
+template <typename T>
+VectorIterator<T> Vector<T>::begin()
+{
+    return VectorIterator<T>(_elements);
+}
 
-/* template <typename T> */
-/* Vector<T>::end() */
-/* { */
-/* } */
+template <typename T>
+VectorIterator<T> Vector<T>::end()
+{
+    return VectorIterator<T>(_elements + _num_elements);
+}
 
-/* template <typename T> */
-/* Vector<T>::find(const T&) */
-/* { */
-/* } */
+template <typename T>
+VectorIterator<T> Vector<T>::find(const T& element)
+{
+    for (unsigned int i = 0; i < _num_elements; ++i)
+    {
+        if (element == _elements[i])
+            return VectorIterator<T>(_elements + i);
+    }
+    return end();
+}
 
 #endif

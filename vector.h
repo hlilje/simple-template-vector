@@ -7,6 +7,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <type_traits>
+#include "iterator.h"
 
 #define BASE_SIZE 10
 
@@ -59,11 +60,11 @@ class Vector
 
         const std::size_t capacity() const;
 
-        /* begin(); */
+        VectorIterator<T> begin();
 
-        /* end(); */
+        VectorIterator<T> end();
 
-        /* find(const T&); */
+        VectorIterator<T> find(const T&);
 };
 
 #include "vector.cpp"
