@@ -5,7 +5,7 @@ template <typename T>
 class VectorIterator : public std::iterator<std::random_access_iterator_tag, T>
 {
     private:
-        const T* _ptr;
+        const T* _ptr; // Pointer to element array
     public:
         VectorIterator();
 
