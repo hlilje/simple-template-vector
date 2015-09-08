@@ -39,6 +39,30 @@ class VectorTestSuite : public CxxTest::TestSuite {
         }
 
         /**
+         * Test the vector capacity.
+         */
+        void test_capacity()
+        {
+            Vector<int> a;
+            Vector<int> b(5);
+            Vector<int> c(10);
+            Vector<int> d(11);
+            Vector<int> e(20, 123);
+
+            TS_ASSERT(a.capacity() == 10);
+            TS_ASSERT(b.capacity() == 10);
+            TS_ASSERT(c.capacity() == 10);
+            TS_ASSERT(d.capacity() == 11);
+            TS_ASSERT(e.capacity() == 20);
+
+            // Should double the capacity
+            for (unsigned int i = 0; i < 5; ++i, b.insert(0, 1));
+            TS_ASSERT(b.capacity() == 10);
+            b.insert(0, 1);
+            TS_ASSERT(b.capacity() == 20);
+        }
+
+        /**
          * Test assignment
          */
         void test_assign()
