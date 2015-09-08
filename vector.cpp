@@ -190,6 +190,12 @@ const void Vector<T>::push_back(const T x)
 template <typename T>
 const void Vector<T>::insert(const std::size_t i, const T x)
 {
+    if (i == _num_elements)
+    {
+        push_back(x);
+        return;
+    }
+
     if (_num_elements >= _size)
         expand(_size, i);
     else
