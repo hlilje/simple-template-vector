@@ -118,6 +118,7 @@ class VectorTestSuite : public CxxTest::TestSuite {
             a.clear();
             for (unsigned int i = 0; i < a.size(); ++i)
                 TS_ASSERT(a[i] == 0);
+            TS_ASSERT(a.size() == 0);
         }
 
         /**
