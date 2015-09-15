@@ -53,7 +53,7 @@ Vector<T>::Vector(const Vector& other)
     _size = size;
     _num_elements = size;
 
-    for (std::size_t i = 0; i < _num_elements; ++i)
+    for (std::size_t i = 0; i < size; ++i)
         _elements[i] = other[i];
 }
 
@@ -68,6 +68,8 @@ Vector<T>::Vector(Vector&& other) :
 #endif
 
     other._elements = nullptr;
+    other._size = 0;
+    other._num_elements = 0;
 }
 
 template <typename T>
@@ -146,10 +148,10 @@ template <typename T>
 const void Vector<T>::init(std::size_t size)
 {
     _num_elements = size;
-    if (size < BASE_SIZE)
-        size = BASE_SIZE;
-    _elements = new T[size];
     _size = size;
+    if (size < BASE_SIZE)
+        _size = BASE_SIZE;
+    _elements = new T[_size];
 }
 
 template <typename T>
