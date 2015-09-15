@@ -311,6 +311,29 @@ class VectorTestSuite : public CxxTest::TestSuite {
             TS_ASSERT_EQUALS( it2, it3 );
         }
 
+        void test_const_iterator()
+        {
+            const Vector<int> v({2,3,4,5,6});
+            int i = 2;
+            for( VectorIterator<int> it = v.begin(); it != v.end(); ++it )
+            {
+                TS_ASSERT_EQUALS( *it, i++ );
+            }
+
+            VectorIterator<int> it2 = v.find(5);
+            TS_ASSERT_EQUALS( *it2, 5);
+            it2 = v.find(3);
+            TS_ASSERT_EQUALS( *it2, 3 );
+
+            VectorIterator<int> it3 = v.end();
+            it3--;
+            TS_ASSERT_EQUALS( *it3, 6 );
+
+            std::iterator<std::random_access_iterator_tag, int>::difference_type diff = it3 - it2;
+            it2 = it2 + diff;
+            TS_ASSERT_EQUALS( it2, it3 );
+        }
+
         /**
          * Test the erase function of the vector.
          */

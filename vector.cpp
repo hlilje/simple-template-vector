@@ -253,13 +253,36 @@ VectorIterator<T> Vector<T>::begin()
 }
 
 template <typename T>
+VectorIterator<T> Vector<T>::begin() const
+{
+    return VectorIterator<T>(_elements);
+}
+
+template <typename T>
 VectorIterator<T> Vector<T>::end()
 {
     return VectorIterator<T>(_elements + _num_elements);
 }
 
 template <typename T>
+VectorIterator<T> Vector<T>::end() const
+{
+    return VectorIterator<T>(_elements + _num_elements);
+}
+
+template <typename T>
 VectorIterator<T> Vector<T>::find(const T& element)
+{
+    for (std::size_t i = 0; i < _num_elements; ++i)
+    {
+        if (element == _elements[i])
+            return VectorIterator<T>(_elements + i);
+    }
+    return end();
+}
+
+template <typename T>
+VectorIterator<T> Vector<T>::find(const T& element) const
 {
     for (std::size_t i = 0; i < _num_elements; ++i)
     {
