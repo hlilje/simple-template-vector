@@ -398,7 +398,7 @@ class VectorTestSuite : public CxxTest::TestSuite {
 //        }
 
         /**
-         *
+         * Tests for memory leak
          */
         void test_mem_leak()
         {
