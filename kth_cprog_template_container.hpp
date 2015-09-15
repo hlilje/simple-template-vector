@@ -39,9 +39,9 @@ class Vector
         ~Vector();
 
 
-        T& operator[](int x);
+        T& operator[](const std::size_t x);
 
-        const T& operator[](int x) const;
+        const T& operator[](const std::size_t x) const;
 
         Vector& operator=(const Vector&);
 

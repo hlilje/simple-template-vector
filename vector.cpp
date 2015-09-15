@@ -53,7 +53,7 @@ Vector<T>::Vector(const Vector& other)
     _size = size;
     _num_elements = size;
 
-    for (unsigned int i = 0; i < _num_elements; ++i)
+    for (std::size_t i = 0; i < _num_elements; ++i)
         _elements[i] = other[i];
 }
 
@@ -96,21 +96,21 @@ Vector<T>::~Vector()
 // Operators
 
 template <typename T>
-T& Vector<T>::operator[](int x)
+T& Vector<T>::operator[](const std::size_t x)
 {
     if (x < 0)
         throw std::out_of_range("Negative index");
-    else if ((unsigned int) x >= _num_elements)
+    else if (x >= _num_elements)
         throw std::out_of_range("Index larger than vector size");
     return _elements[x];
 }
 
 template <typename T>
-const T& Vector<T>::operator[](int x) const
+const T& Vector<T>::operator[](const std::size_t x) const
 {
     if (x < 0)
         throw std::out_of_range("Negative index");
-    else if ((unsigned int) x >= _num_elements)
+    else if (x >= _num_elements)
         throw std::out_of_range("Index larger than vector size");
     return _elements[x];
 }
@@ -171,7 +171,7 @@ const void Vector<T>::expand(const int size, const int i)
 template <typename T>
 const void Vector<T>::fill(const T x)
 {
-    for (unsigned int i = 0; i < _size; ++i)
+    for (std::size_t i = 0; i < _size; ++i)
         _elements[i] = T {x};
 }
 
@@ -248,7 +248,7 @@ VectorIterator<T> Vector<T>::end()
 template <typename T>
 VectorIterator<T> Vector<T>::find(const T& element)
 {
-    for (unsigned int i = 0; i < _num_elements; ++i)
+    for (std::size_t i = 0; i < _num_elements; ++i)
     {
         if (element == _elements[i])
             return VectorIterator<T>(_elements + i);
