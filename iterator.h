@@ -35,9 +35,12 @@ class VectorIterator : public std::iterator<std::random_access_iterator_tag, T>
         inline VectorIterator& operator+=(difference_type rhs) {_ptr += rhs; return *this;}
         inline VectorIterator& operator-=(difference_type rhs) {_ptr -= rhs; return *this;}
 
-        inline T& operator*() const {return *_ptr;}
-        inline T* operator->() const {return _ptr;}
-        inline T& operator[](difference_type rhs) const {return _ptr[rhs];}
+        inline T& operator*() {return *_ptr;}
+        inline T* operator->() {return _ptr;}
+        inline T& operator[](difference_type rhs) {return _ptr[rhs];}
+        inline const T& operator*() const {return *_ptr;}
+        inline const T* operator->() const {return _ptr;}
+        inline const T& operator[](difference_type rhs) const {return _ptr[rhs];}
 
         // Prefix
         inline VectorIterator& operator++() {++_ptr; return *this;}

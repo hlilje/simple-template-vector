@@ -80,7 +80,7 @@ Vector<T>::Vector(const std::initializer_list<T> list)
     static_assert(std::is_move_constructible<T>::value, "Type must be Move Constructible");
 #endif
 
-    T size = list.size();
+    std::size_t size = list.size();
     _elements = new T[size];
     _size = size;
     _num_elements = 0;
