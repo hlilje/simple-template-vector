@@ -26,7 +26,7 @@ class Vector
     public:
         Vector();
 
-        Vector(const std::size_t);
+        explicit Vector(const std::size_t);
 
         Vector(const std::size_t, const T);
 

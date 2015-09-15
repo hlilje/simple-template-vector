@@ -323,6 +323,49 @@ class VectorTestSuite : public CxxTest::TestSuite {
         }
 
         /**
+         * Test constructing vector with const size_t
+         */
+        void test_const_size()
+        {
+            const size_t s = 17;
+            Vector<int> a(s);
+            TS_ASSERT_EQUALS(a.size(), (std::size_t) 17);
+        }
+
+        // shouldn't compile
+//        void test_stuff()
+//        {
+//            std::size_t n = 24;
+//            UIntVector a(1);
+//            a = n;
+//            TS_ASSERT(a.size() != n);
+//            UIntVector b = n;
+//            TS_ASSERT(b.size() != n);
+//        }
+
+        /**
+         *
+         */
+        void test_mem_leak()
+        {
+            Vector<unsigned int> v(20);
+            for(unsigned int i = 0; i < 100000; ++i)
+                v.push_back(i);
+            TS_ASSERT_EQUALS(v.size(), (std::size_t) 100020);
+            Vector<unsigned int> u = std::move(v);
+            v = u;
+            Vector<unsigned int> * w = new Vector<unsigned int>(7);
+            delete w;
+
+            Vector<unsigned int> a(123232);
+            a = v;
+
+            Vector<unsigned int> b(2);
+            //a.reset();
+            b = std::move(a);
+        }
+
+        /**
          * Copy of inital tests.
          */
         void test_old()
