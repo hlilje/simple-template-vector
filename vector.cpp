@@ -121,7 +121,6 @@ Vector<T>& Vector<T>::operator=(const Vector& other)
     if (this == &other)
         return *this;
     Vector temp = Vector(other);
-    delete [] _elements;
     *this = std::move(temp);
     return *this;
 }
@@ -129,10 +128,15 @@ Vector<T>& Vector<T>::operator=(const Vector& other)
 template <typename T>
 Vector<T>& Vector<T>::operator=(Vector&& other)
 {
+    if (this == &other)
+        return *this;
+    delete [] _elements;
     _elements = other._elements;
     _size = other._size;
     _num_elements = other._num_elements;
     other._elements = nullptr;
+    other._size = 0;
+    other._num_elements = 0;
     return *this;
 }
 
