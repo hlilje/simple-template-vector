@@ -418,16 +418,17 @@ class VectorTestSuite : public CxxTest::TestSuite {
                v[1] == 3.14);
             assert(v.size() == 2);      // nu ligger två element i vektorn
 
+            std::sort(v.begin(), v.end(), [](double a, double b){return a > b;});
             /* v.sort(false);              // sortera i fallande ordning */
-            /* assert(v[0] == 3.14 &&      // hamnade de rätt? */
-            /*    v[1] == 2.10); */
-            /* assert(v.size() == 2);      // ingenting ändrat? */
-            /* v[1] = 2.11;                // tilldelning av enstaka element; */
+            assert(v[0] == 3.14 &&      // hamnade de rätt?
+                v[1] == 2.10);
+            assert(v.size() == 2);      // ingenting ändrat?
+            v[1] = 2.11;                // tilldelning av enstaka element;
 
-            /* const Vector<double> &vc = v;  // skapa konstant referens */
-            /* assert(vc.size() == 2);     // ok: ändrar ej vektorn som är konstant */
-            /* assert(vc[0] == 3.14 &&     // ok: ändrar ej vektorn som är konstant */
-            /*    vc[1] == 2.11); */
+            const Vector<double> &vc = v;  // skapa konstant referens
+            assert(vc.size() == 2);     // ok: ändrar ej vektorn som är konstant
+            assert(vc[0] == 3.14 &&     // ok: ändrar ej vektorn som är konstant
+                vc[1] == 2.11);
 
             v.erase(0);                 // ta bort första elementet
             assert(v.size() == 1);      // rätt antal elelment
