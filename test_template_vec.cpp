@@ -1,5 +1,5 @@
-#include "vector.h"             // inkludera din headerfil här
-#include <assert.h>             // assert(b) ger felmeddelande om b falsk
+#include "kth_cprog_template_container.hpp"
+#include <assert.h>
 #include <cxxtest/TestSuite.h>
 #include <stdexcept>
 #include <iostream>

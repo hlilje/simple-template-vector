@@ -1,7 +1,7 @@
 #ifndef TEMPLATE_VEC
 #define TEMPLATE_VEC
 
-#include "vector.h"
+#include "kth_cprog_template_container.hpp"
 #define TYPE_ASSERT 0
 
 // Constructors/destructor
