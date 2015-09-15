@@ -234,6 +234,13 @@ const std::size_t Vector<T>::size() const
 }
 
 template <typename T>
+const void Vector<T>::reset()
+{
+    for (std::size_t i = 0; i < _size; ++i)
+        _elements[i] = T {0};
+}
+
+template <typename T>
 const std::size_t Vector<T>::capacity() const
 {
     return _size;

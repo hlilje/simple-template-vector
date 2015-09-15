@@ -109,6 +109,19 @@ class VectorTestSuite : public CxxTest::TestSuite {
         }
 
         /**
+         * Test resetting.
+         */
+        void test_reset()
+        {
+            Vector<unsigned int> a(5);
+            for (std::size_t i = 0; i < a.size(); ++i)
+                a[i] = i;
+            a.reset();
+            for (std::size_t i = 0; i < a.size(); ++i)
+                TS_ASSERT(a[i] == 0);
+        }
+
+        /**
          * Test clearing.
          */
         void test_clear()
@@ -361,7 +374,7 @@ class VectorTestSuite : public CxxTest::TestSuite {
             a = v;
 
             Vector<unsigned int> b(2);
-            //a.reset();
+            a.reset();
             b = std::move(a);
         }
 

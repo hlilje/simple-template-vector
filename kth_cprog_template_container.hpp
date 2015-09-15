@@ -58,6 +58,8 @@ class Vector
 
         const std::size_t size() const;
 
+        const void reset();
+
         const std::size_t capacity() const;
 
         VectorIterator<T> begin();
