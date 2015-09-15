@@ -64,15 +64,15 @@ class Vector
 
         VectorIterator<T> begin();
 
-        VectorIterator<T> begin() const;
+        const VectorIterator<T> begin() const;
 
         VectorIterator<T> end();
 
-        VectorIterator<T> end() const;
+        const VectorIterator<T> end() const;
 
         VectorIterator<T> find(const T&);
 
-        VectorIterator<T> find(const T&) const;
+        const VectorIterator<T> find(const T&) const;
 };
 
 #include "vector.cpp"
