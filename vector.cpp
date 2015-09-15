@@ -15,6 +15,7 @@ Vector<T>::Vector()
 #endif
 
     init(0);
+    reset();
 }
 
 template <typename T>
@@ -26,6 +27,7 @@ Vector<T>::Vector(const std::size_t size)
 #endif
 
     init(size);
+    reset();
 }
 
 template <typename T>
@@ -221,6 +223,11 @@ const void Vector<T>::clear()
 template <typename T>
 const void Vector<T>::erase(const std::size_t i)
 {
+    if (i < 0)
+        throw std::out_of_range("Negative index");
+    else if (i >= _num_elements)
+        throw std::out_of_range("Index larger than vector size");
+
     --_num_elements;
 
     for(std::size_t j = i; j < _num_elements; ++j)
@@ -237,7 +244,7 @@ template <typename T>
 const void Vector<T>::reset()
 {
     for (std::size_t i = 0; i < _size; ++i)
-        _elements[i] = T {0};
+        _elements[i] = T {};
 }
 
 template <typename T>

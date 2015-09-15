@@ -19,6 +19,8 @@ class VectorTestSuite : public CxxTest::TestSuite {
             TS_ASSERT(b.size() == 1);
             Vector<unsigned int> c(123);
             TS_ASSERT(c.size() == 123);
+            Vector<unsigned int> h(1024);
+            TS_ASSERT(h.size() == 1024);
 
             Vector<unsigned int> d(c);
             TS_ASSERT(d.size() == c.size());
