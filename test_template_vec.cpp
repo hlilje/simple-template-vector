@@ -286,6 +286,22 @@ class VectorTestSuite : public CxxTest::TestSuite {
 
             w.insert(w.size(), 33);
             TS_ASSERT(w[w.size()-1] == 33);
+
+            Vector<int> v2;
+            for (int i = 0; i < 3; ++i)
+            {
+                v2.insert(0, 42);
+                v2.insert(0, -43);
+                v2.insert(1, 44);
+                v2.insert(3, 45);
+            }
+            for (int i = 0; i < 3; ++i)
+            {
+                TS_ASSERT(v2[i * 4] == -43);
+                TS_ASSERT(v2[i * 4 + 1] == 44);
+                TS_ASSERT(v2[i * 4 + 2] == 42);
+                TS_ASSERT(v2[i * 4 + 3] == 45);
+            }
         }
 
         void test_iterator()

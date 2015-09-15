@@ -165,7 +165,7 @@ const void Vector<T>::expand(const int size, const int i)
     else
     {
         std::copy(_elements, _elements + i, new_elements);
-        std::copy(_elements + i, _elements + _size - i, new_elements + i + 1);
+        std::copy(_elements + i, _elements + _size, new_elements + i + 1);
     }
 
     delete [] _elements;
